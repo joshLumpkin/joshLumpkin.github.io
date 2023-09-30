@@ -35,3 +35,104 @@ body {
     background-color: lightgreen;
     color: white;
 }
+
+#hangmanImage {
+    width: 200px;
+    height: 160px;
+    position: relative;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post {
+    width: 10px;
+    height: 150px;
+    position: absolute;
+    background-color: black;
+    left: 15%;
+    bottom: 10px;
+}
+
+.base {
+    width: 70px;
+    height: 10px;
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+}
+
+.beam {
+    width: 70px;
+    height: 10px;
+    position: absolute;
+    left: 15%;
+    background-color: black;
+}
+
+.rope {
+    width: 5px;
+    height: 15px;
+    position: absolute;
+    background-color: black;
+    left: 47.5%;
+    top: 10px;
+}
+
+.head {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    left: 40%;
+}
+
+.body {
+    width: 2px;
+    height: 50px;
+    background-color: black;
+    position: absolute;
+    top: 57px;
+    left: 48%;
+}
+
+.left-arm, .right-arm, .left-leg, .right-leg, .head, .body {
+    display: none;
+}
+
+.left-arm, .right-arm, .left-leg, .right-leg {
+    width: 2px;
+    height: 30px;
+    background-color: black;
+}
+
+.left-arm {
+    position: absolute;
+    top: 65px;
+    left: 43.1%;
+    transform: rotate(45deg);
+}
+
+.left-leg {
+    position: absolute;
+    top: 101px;
+    left: 43.1%;
+    transform: rotate(45deg);
+}
+
+.right-arm {
+    position: absolute;
+    top: 65px;
+    left: 53.1%;
+    transform: rotate(-45deg);
+}
+
+.right-leg {
+    position: absolute;
+    top: 101px;
+    left: 53.1%;
+    transform: rotate(-45deg);
+}

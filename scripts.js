@@ -4,6 +4,7 @@ let wordArray = [];
 let guessedLetters = [];
 let wrongGuesses = 0;
 let guessAmount = 6;
+const hangmanParts = ['head', 'body', 'left-arm', 'right-arm', 'left-leg', 'right-leg'];
 
 //Fetch word
 function fetchWord() {
@@ -38,7 +39,10 @@ function displayWord() {
 
 //Update the hangman drawing based on how many wrong guesses
 function updateHangmanDrawing(wrongGuesses) {
-
+    if (wrongGuesses > 0 && wrongGuesses <= hangmanParts.length) {
+        const part = hangmanParts[wrongGuesses - 1];
+        document.querySelector(`.${part}`).style.display = 'block';
+    }
 }
 
 //Start a new game
@@ -46,12 +50,20 @@ function newGame() {
     guessedLetters = [];
     wrongGuesses = 0;
 
+    //remove game message
     document.getElementById('gameMessage').textContent = '';
 
+    //remove colors and make all buttons active again
     document.querySelectorAll('.letterBtn').forEach(button => {
         button.disabled = false; // Enable all letter buttons for a new game
         button.classList.remove('correct', 'wrong'); // Remove the "correct" and "wrong" classes from all buttons
     });
+
+    //remove all hangman parts from view
+    hangmanParts.forEach(part => {
+        document.querySelector(`.${part}`).style.display = 'none';
+    });
+
     fetchWord();
 }
 
@@ -78,7 +90,7 @@ document.getElementById('keyboard').addEventListener('click', function(e) {
             if (wrongGuesses >= guessAmount) {
                 // Player loses
                 document.getElementById('gameMessage').textContent = 'You lost! The word was ' + word + '.';
-
+                updateHangmanDrawing(wrongGuesses);
                 document.querySelectorAll('.letterBtn').forEach(btn => {
                     btn.disabled = true;
                 });
