@@ -28,8 +28,10 @@ body {
 
 .wrong {
     background-color: lightcoral;
+    color: white;
 }
 
 .correct {
     background-color: lightgreen;
+    color: white;
 }

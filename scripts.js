@@ -7,7 +7,7 @@ let guessAmount = 6;
 
 //Fetch word
 function fetchWord() {
-    fetch('https://random-word-api.herokuapp.com/word?length=7')
+    fetch('https://random-word-api.herokuapp.com/word?length=5')
     .then(response => response.json())
     .then(data => {
         if (data.length && typeof data[0] === 'string') { // Check if there's a word in the response
@@ -23,7 +23,7 @@ function fetchWord() {
     });
 }
 
-//Display letter or _
+//Display letter or _ based on guest
 function displayWord() {
     let display = '';
     for (let letter of word) {
@@ -36,10 +36,18 @@ function displayWord() {
     document.getElementById('wordDisplay').textContent = display.trim();
 }
 
-//New Game
+//Update the hangman drawing based on how many wrong guesses
+function updateHangmanDrawing(wrongGuesses) {
+
+}
+
+//Start a new game
 function newGame() {
     guessedLetters = [];
     wrongGuesses = 0;
+
+    document.getElementById('gameMessage').textContent = '';
+
     document.querySelectorAll('.letterBtn').forEach(button => {
         button.disabled = false; // Enable all letter buttons for a new game
         button.classList.remove('correct', 'wrong'); // Remove the "correct" and "wrong" classes from all buttons
@@ -70,6 +78,10 @@ document.getElementById('keyboard').addEventListener('click', function(e) {
             if (wrongGuesses >= guessAmount) {
                 // Player loses
                 document.getElementById('gameMessage').textContent = 'You lost! The word was ' + word + '.';
+
+                document.querySelectorAll('.letterBtn').forEach(btn => {
+                    btn.disabled = true;
+                });
             } else {
                 // Update hangman drawing based on wrongGuesses
                 updateHangmanDrawing(wrongGuesses);
@@ -78,5 +90,5 @@ document.getElementById('keyboard').addEventListener('click', function(e) {
     }
 });
 
-
+//Starts the game by grabbing a word
 fetchWord();
