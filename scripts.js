@@ -63,15 +63,15 @@ document.getElementById('keyboard').addEventListener('click', function(e) {
 
             if (Array.from(new Set(word.split(''))).every(l => guessedLetters.includes(l))) {
                 // Player wins
-                document.getElementById('gameMessages').textContent = 'You won!';
+                document.getElementById('gameMessage').textContent = 'You won!';
             }
         } else {
             button.classList.add('wrong');
             wrongGuesses++;
 
-            if (wrongGuesses >= maxWrongGuesses) {
+            if (wrongGuesses >= guessAmount) {
                 // Player loses
-                document.getElementById('gameMessages').textContent = 'You lost! The word was ' + word + '.';
+                document.getElementById('gameMessage').textContent = 'You lost! The word was ' + word + '.';
             } else {
                 // Update hangman drawing based on wrongGuesses
                 updateHangmanDrawing(wrongGuesses);
