@@ -1,5 +1,6 @@
 //Variables
 let word = '';
+let wordArray = [];
 let guessedLetters = [];
 let wrongGuesses = 0;
 let guessAmount = 6;
@@ -23,10 +24,7 @@ function fetchWord() {
 }
 
 //Guess a letter
-function guessLetter() {
 
-    displayWord();
-}
 
 //Display letter or _
 function displayWord() {
@@ -51,6 +49,36 @@ function newGame() {
     });
     fetchWord();
 }
+
+document.getElementById('keyboard').addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('letterBtn')) {
+        const button = e.target;
+        const letter = button.value;
+        button.disabled = true;
+
+        if (word.includes(letter)) {
+            button.classList.add('correct');
+            guessedLetters.push(letter);
+            displayWord();
+
+            if (Array.from(new Set(word.split(''))).every(l => guessedLetters.includes(l))) {
+                // Player wins
+                document.getElementById('gameMessages').textContent = 'You won!';
+            }
+        } else {
+            button.classList.add('wrong');
+            wrongGuesses++;
+
+            if (wrongGuesses >= maxWrongGuesses) {
+                // Player loses
+                document.getElementById('gameMessages').textContent = 'You lost! The word was ' + word + '.';
+            } else {
+                // Update hangman drawing based on wrongGuesses
+                updateHangmanDrawing(wrongGuesses);
+            }
+        }
+    }
+});
 
 
 fetchWord();
