@@ -1,9 +1,10 @@
-h1 {
+body {
+    text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-    text-align: center;
+#wordDisplay {
+    font-size: 5rem;
 }
 
 #keyboard {
@@ -13,22 +14,22 @@ body {
 }
 
 .letterBtn {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     width: 40px;
     height: 40px;
     margin: 4px;
 }
 
 .newGame {
-    padding: 5px;
-    margin: 5px;
-    font-size: 1.2rem;
+    padding: 3px;
+    margin: 3px;
+    font-size: .8rem;
 }
 
 .wrong {
-    background-color: red;
+    background-color: lightcoral;
 }
 
 .correct {
-    background-color: green;
+    background-color: lightgreen;
 }

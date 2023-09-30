@@ -23,9 +23,6 @@ function fetchWord() {
     });
 }
 
-//Guess a letter
-
-
 //Display letter or _
 function displayWord() {
     let display = '';
@@ -50,6 +47,7 @@ function newGame() {
     fetchWord();
 }
 
+//Guess a letter
 document.getElementById('keyboard').addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('letterBtn')) {
         const button = e.target;
@@ -63,7 +61,7 @@ document.getElementById('keyboard').addEventListener('click', function(e) {
 
             if (Array.from(new Set(word.split(''))).every(l => guessedLetters.includes(l))) {
                 // Player wins
-                document.getElementById('gameMessage').textContent = 'You won!';
+                document.getElementById('gameMessage').textContent = 'You won! Want to play again?';
             }
         } else {
             button.classList.add('wrong');
