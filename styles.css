@@ -25,10 +25,10 @@ body {
     font-size: 1.2rem;
 }
 
-#wrong {
+.wrong {
     background-color: red;
 }
 
-#correct {
+.correct {
     background-color: green;
 }
