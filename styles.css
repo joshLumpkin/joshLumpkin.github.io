@@ -1,0 +1,34 @@
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    text-align: center;
+}
+
+#keyboard {
+    width: 85vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.letterBtn {
+    font-size: 1.1rem;
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+}
+
+.newGame {
+    padding: 5px;
+    margin: 5px;
+    font-size: 1.2rem;
+}
+
+#wrong {
+    background-color: red;
+}
+
+#correct {
+    background-color: green;
+}
